@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cart | MANASA PLUMBITE</title>
+
+<style>
+:root {
+    --plum: #21152E;
+    --purple: #49345D;
+    --lime: #D6FF72;
+    --ivory: #FFF8EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--plum);
+}
+
+header {
+    background: var(--plum);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: var(--lime);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--lime);
+}
+
+.heading {
+    text-align: center;
+    padding: 40px 15px;
+}
+
+.heading h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.cart-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+.cart-items, .summary {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000012;
+}
+
+.cart-items h2, .summary h2 {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #eee;
+    padding: 18px 0;
+}
+
+.item-name {
+    font-weight: bold;
+}
+
+.item-price {
+    color: var(--purple);
+    margin-top: 6px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity button {
+    border: none;
+    background: var(--lime);
+    padding: 7px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #ffe1e1;
+    color: #b00020;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px 10px;
+    color: #777;
+}
+
+.empty a {
+    display: inline-block;
+    margin-top: 15px;
+    background: var(--lime);
+    color: var(--plum);
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.summary p {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px 0;
+}
+
+.total {
+    font-size: 21px;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 18px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--plum);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.checkout-btn:hover {
+    background: var(--purple);
+}
+
+.continue {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    background: var(--plum);
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+@media(max-width: 700px) {
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MANASA PLUMBITE</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<section class="heading">
+    <h1>🛒 My Shopping Cart</h1>
+    <p>Review your favourite food before checkout!</p>
+</section>
+
+<section class="cart-container">
+
+    <div class="cart-items">
+        <h2>Your Food Items</h2>
+        <div id="cartList"></div>
+    </div>
+
+    <div class="summary">
+        <h2>Order Summary</h2>
+
+        <p>
+            <span>Subtotal</span>
+            <span id="subtotal">₹0</span>
+        </p>
+
+        <p>
+            <span>Delivery Fee</span>
+            <span id="delivery">₹0</span>
+        </p>
+
+        <p class="total">
+            <span>Total</span>
+            <span id="total">₹0</span>
+        </p>
+
+        <button class="checkout-btn" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+
+        <a href="menu.html" class="continue">
+            ← Continue Shopping
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 MANASA PLUMBITE | Fresh Food, Happy Life ❤️</p>
+</footer>
+
+<script>
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("manasaCart")) || [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem("manasaCart", JSON.stringify(cart));
+}
+
+function displayCart() {
+
+    let cart = getCart();
+    let cartList = document.getElementById("cartList");
+
+    cartList.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartList.innerHTML = `
+            <div class="empty">
+                <h3>Your cart is empty!</h3>
+                <p>Add some delicious food from our menu.</p>
+                <a href="menu.html">Explore Menu</a>
+            </div>
+        `;
+    }
+
+    cart.forEach((item, index) => {
+
+        let quantity = item.quantity || 1;
+
+        let div = document.createElement("div");
+        div.className = "cart-item";
+
+        let details = document.createElement("div");
+        details.innerHTML = `
+            <div class="item-name"></div>
+            <div class="item-price"></div>
+        `;
+
+        details.querySelector(".item-name").textContent = item.name;
+        details.querySelector(".item-price").textContent =
+            "₹" + item.price + " each";
+
+        let controls = document.createElement("div");
+        controls.className = "quantity";
+
+        let minus = document.createElement("button");
+        minus.textContent = "-";
+        minus.onclick = () => changeQuantity(index, -1);
+
+        let count = document.createElement("span");
+        count.textContent = quantity;
+
+        let plus = document.createElement("button");
+        plus.textContent = "+";
+        plus.onclick = () => changeQuantity(index, 1);
+
+        let remove = document.createElement("button");
+        remove.textContent = "Remove";
+        remove.className = "remove-btn";
+        remove.onclick = () => removeItem(index);
+
+        controls.append(minus, count, plus, remove);
+        div.append(details, controls);
+        cartList.appendChild(div);
+    });
+
+    updateSummary();
+}
+
+function changeQuantity(index, change) {
+
+    let cart = getCart();
+
+    cart[index].quantity = (cart[index].quantity || 1) + change;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart(cart);
+    displayCart();
+}
+
+function removeItem(index) {
+
+    let cart = getCart();
+
+    cart.splice(index, 1);
+
+    saveCart(cart);
+    displayCart();
+}
+
+function updateSummary() {
+
+    let cart = getCart();
+
+    let subtotal = cart.reduce((sum, item) => {
+        return sum + item.price * (item.quantity || 1);
+    }, 0);
+
+    let delivery = subtotal > 0 ? 30 : 0;
+    let total = subtotal + delivery;
+
+    document.getElementById("subtotal").textContent = "₹" + subtotal;
+    document.getElementById("delivery").textContent = "₹" + delivery;
+    document.getElementById("total").textContent = "₹" + total;
+}
+
+function checkout() {
+
+    let cart = getCart();
+
+    if (cart.length === 0) {
+        alert("Your cart is empty! Please add food items.");
+        return;
+    }
+
+    alert("Your cart is ready! Checkout page will be available soon.");
+}
+
+displayCart();
+
+</script>
+
+</body>
+</html>

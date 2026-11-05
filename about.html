@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | MANASA PLUMBITE</title>
+
+<style>
+:root {
+    --plum: #21152E;
+    --purple: #49345D;
+    --lime: #D6FF72;
+    --ivory: #FFF8EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--plum);
+}
+
+/* Header */
+
+header {
+    background: var(--plum);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--lime);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--lime);
+}
+
+/* Hero Section */
+
+.hero {
+    min-height: 350px;
+    background:
+    linear-gradient(#21152ecc, #21152ecc),
+    url("https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400")
+    center/cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* About Section */
+
+.about {
+    padding: 65px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.about img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about p {
+    line-height: 1.8;
+    color: #62596b;
+    margin-bottom: 15px;
+}
+
+/* Mission and Vision */
+
+.mission {
+    background: var(--plum);
+    color: white;
+    padding: 55px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.mission-box {
+    background: var(--purple);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.mission-box h2 {
+    color: var(--lime);
+    margin-bottom: 15px;
+}
+
+.mission-box p {
+    line-height: 1.8;
+}
+
+/* Why Choose Us */
+
+.why {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.why h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 22px;
+}
+
+.feature {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px #00000012;
+}
+
+.feature h3 {
+    margin: 15px 0;
+    color: var(--purple);
+}
+
+.feature p {
+    color: #62596b;
+    line-height: 1.6;
+}
+
+.feature .emoji {
+    font-size: 38px;
+}
+
+/* Button */
+
+.menu-btn {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--plum);
+    padding: 14px 25px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.menu-btn:hover {
+    background: white;
+}
+
+/* Footer */
+
+footer {
+    background: var(--plum);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+@media(max-width: 750px) {
+    .about,
+    .mission {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">MANASA PLUMBITE</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div>
+        <h1>About MANASA PLUMBITE</h1>
+        <p>Good Food. Great Mood. Happy Moments.</p>
+    </div>
+</section>
+
+<!-- About Us -->
+<section class="about">
+
+    <img
+        src="https://images.unsplash.com/photo-1547592180-85f173990554?w=900"
+        alt="Freshly prepared food">
+
+    <div>
+        <h2>Welcome to MANASA PLUMBITE!</h2>
+
+        <p>
+            MANASA PLUMBITE is an online food ordering platform
+            designed to make delicious food easily accessible
+            to everyone.
+        </p>
+
+        <p>
+            Our platform helps customers explore different food
+            items, view prices, select their favourite dishes
+            and add them to their shopping cart.
+        </p>
+
+        <p>
+            We aim to provide a simple, convenient and enjoyable
+            food ordering experience with a variety of food
+            choices.
+        </p>
+
+        <a href="menu.html" class="menu-btn">Explore Our Menu</a>
+    </div>
+
+</section>
+
+<!-- Mission and Vision -->
+<section class="mission">
+
+    <div class="mission-box">
+        <h2>🎯 Our Mission</h2>
+
+        <p>
+            Our mission is to provide a user-friendly food
+            ordering experience where customers can easily
+            discover food, compare prices and place their
+            favourite items in the cart.
+        </p>
+    </div>
+
+    <div class="mission-box">
+        <h2>🌟 Our Vision</h2>
+
+        <p>
+            Our vision is to build a convenient and reliable
+            online food ordering platform that brings people
+            closer to their favourite meals.
+        </p>
+    </div>
+
+</section>
+
+<!-- Why Choose Us -->
+<section class="why">
+
+    <h2>Why Choose Us?</h2>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="emoji">🍽️</div>
+            <h3>Variety of Food</h3>
+            <p>Explore different dishes and food categories.</p>
+        </div>
+
+        <div class="feature">
+            <div class="emoji">💻</div>
+            <h3>Easy Ordering</h3>
+            <p>Simple website design for a smooth ordering experience.</p>
+        </div>
+
+        <div class="feature">
+            <div class="emoji">💰</div>
+            <h3>Clear Pricing</h3>
+            <p>View food prices before adding items to your cart.</p>
+        </div>
+
+        <div class="feature">
+            <div class="emoji">❤️</div>
+            <h3>Customer Friendly</h3>
+            <p>Designed to make food selection easy and enjoyable.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 MANASA PLUMBITE | Fresh Food, Happy Life ❤️</p>
+    <p>Thank you for choosing us!</p>
+</footer>
+
+<script>
+console.log("Welcome to MANASA PLUMBITE About Page!");
+</script>
+
+</body>
+</html>

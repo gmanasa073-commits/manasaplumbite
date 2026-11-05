@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | MANASA PLUMBITE</title>
+
+<style>
+:root {
+    --plum: #21152E;
+    --purple: #49345D;
+    --lavender: #E8DDF5;
+    --lime: #D6FF72;
+    --ivory: #FFF8EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: var(--ivory);
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+header {
+    background: var(--plum);
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: var(--lime);
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--lime);
+}
+
+/* LOGIN BACKGROUND */
+
+.login-section {
+    min-height: calc(100vh - 75px);
+    padding: 50px 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+    linear-gradient(#21152e55, #21152e55),
+    url("https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400")
+    center/cover;
+}
+
+/* LOGIN CARD */
+
+.login-container {
+    width: 100%;
+    max-width: 950px;
+    min-height: 550px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 15px 45px #00000035;
+}
+
+/* LEFT SIDE */
+
+.login-image {
+    background:
+    linear-gradient(#21152e99, #21152ecc),
+    url("https://images.unsplash.com/photo-1547592180-85f173990554?w=900")
+    center/cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 45px;
+    color: white;
+}
+
+.login-image h1 {
+    font-size: 38px;
+    margin-bottom: 18px;
+    color: var(--lime);
+}
+
+.login-image p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #f2eaf8;
+}
+
+/* RIGHT SIDE */
+
+.login-form {
+    padding: 55px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: var(--plum);
+}
+
+.subtitle {
+    color: #81758b;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* INPUTS */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 9px;
+    color: var(--plum);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd4e5;
+    border-radius: 9px;
+    outline: none;
+    background: #FFFCFF;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px #49345d15;
+}
+
+/* PASSWORD */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 65px;
+}
+
+.show-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--purple);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* OPTIONS */
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.options a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--plum);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: var(--purple);
+    color: var(--lime);
+}
+
+/* REGISTER */
+
+.register {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #776d80;
+}
+
+.register a {
+    color: var(--purple);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--plum);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer span {
+    color: var(--lime);
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 750px) {
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-image {
+        min-height: 220px;
+        padding: 30px;
+    }
+
+    .login-image h1 {
+        font-size: 30px;
+    }
+
+    .login-form {
+        padding: 35px 25px;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <div class="logo">MANASA PLUMBITE.</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+</header>
+
+<!-- LOGIN SECTION -->
+
+<section class="login-section">
+
+    <div class="login-container">
+
+        <!-- LEFT IMAGE -->
+
+        <div class="login-image">
+
+            <h1>Good Food.<br>Great Mood.</h1>
+
+            <p>
+                Welcome to MANASA PLUMBITE!
+                Login to explore delicious food,
+                discover your favourites and enjoy
+                a simple food ordering experience.
+            </p>
+
+        </div>
+
+        <!-- LOGIN FORM -->
+
+        <div class="login-form">
+
+            <h2>Welcome Back! 👋</h2>
+
+            <p class="subtitle">
+                Login to your account to continue.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="email">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword()"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="options">
+
+                    <label class="remember">
+                        <input type="checkbox" id="remember">
+                        Remember me
+                    </label>
+
+                    <a href="#" onclick="forgotPassword(event)">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Login Now →
+                </button>
+
+            </form>
+
+            <div class="register">
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <p>
+        © 2026 <span>MANASA PLUMBITE</span> |
+        Fresh Food, Happy Life ❤️
+    </p>
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function togglePassword() {
+
+    let password = document.getElementById("password");
+    let button = document.querySelector(".show-password");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+        button.textContent = "Hide";
+
+    } else {
+
+        password.type = "password";
+        button.textContent = "Show";
+
+    }
+
+}
+
+function forgotPassword(event) {
+
+    event.preventDefault();
+
+    alert("Password recovery feature will be available soon!");
+
+}
+
+document.getElementById("loginForm").addEventListener("submit",
+function(event) {
+
+    event.preventDefault();
+
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+
+        alert("Please enter your email and password.");
+        return;
+
+    }
+
+    if (password.length < 6) {
+
+        alert("Password must contain at least 6 characters.");
+        return;
+
+    }
+
+    alert("Login form validated successfully! Backend authentication is not connected yet.");
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu | MANASA PLUMBITE</title>
+
+<style>
+:root {
+    --plum: #21152E;
+    --purple: #49345D;
+    --lime: #D6FF72;
+    --ivory: #FFF8EC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: var(--ivory);
+    color: var(--plum);
+}
+
+header {
+    background: var(--plum);
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--lime);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--lime);
+}
+
+.heading {
+    text-align: center;
+    padding: 45px 15px 25px;
+}
+
+.heading h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.heading p {
+    color: #665b70;
+}
+
+.filters {
+    text-align: center;
+    padding: 20px;
+}
+
+.filters button {
+    background: var(--plum);
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    margin: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.filters button:hover,
+.filters button.active {
+    background: var(--lime);
+    color: var(--plum);
+}
+
+.search {
+    display: block;
+    width: 85%;
+    max-width: 450px;
+    margin: 15px auto 30px;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.menu-container {
+    padding: 10px 7% 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #00000015;
+    transition: 0.3s;
+}
+
+.food-card:hover {
+    transform: translateY(-6px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 18px;
+}
+
+.food-info h3 {
+    margin-bottom: 8px;
+}
+
+.food-info p {
+    color: #6b6270;
+    font-size: 14px;
+    min-height: 35px;
+}
+
+.price {
+    color: #49345D;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: var(--lime);
+    color: var(--plum);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: var(--plum);
+    color: white;
+}
+
+#noResults {
+    display: none;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 30px;
+}
+
+footer {
+    background: var(--plum);
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav a {
+        margin: 7px;
+        display: inline-block;
+    }
+
+    .heading h1 {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">MANASA PLUMBITE</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+    </nav>
+</header>
+
+<section class="heading">
+    <h1>Explore Our Menu 🍽️</h1>
+    <p>Delicious food, fresh flavours and happy moments!</p>
+</section>
+
+<div class="filters">
+    <button class="active" onclick="filterFood('All', this)">All</button>
+    <button onclick="filterFood('Biryani', this)">Biryani</button>
+    <button onclick="filterFood('Chinese', this)">Chinese</button>
+    <button onclick="filterFood('Curries', this)">Curries</button>
+    <button onclick="filterFood('Snacks', this)">Snacks</button>
+    <button onclick="filterFood('Desserts', this)">Desserts</button>
+    <button onclick="filterFood('Beverages', this)">Beverages</button>
+</div>
+
+<input
+    type="text"
+    class="search"
+    id="searchInput"
+    placeholder="Search your favourite food..."
+    oninput="searchFood()"
+>
+
+<section class="menu-container" id="menuContainer">
+
+    <div class="food-card" data-category="Biryani">
+        <img src="https://images.unsplash.com/photo-1563379091339-03246963d96c?w=600" alt="Chicken Biryani">
+        <div class="food-info">
+            <h3>Chicken Biryani</h3>
+            <p>Spicy chicken with flavourful rice.</p>
+            <div class="price">₹180</div>
+            <button class="add-btn" onclick="addCart('Chicken Biryani',180)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Biryani">
+        <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600" alt="Veg Biryani">
+        <div class="food-info">
+            <h3>Veg Biryani</h3>
+            <p>Fresh vegetables cooked with aromatic rice.</p>
+            <div class="price">₹130</div>
+            <button class="add-btn" onclick="addCart('Veg Biryani',130)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Chinese">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600" alt="Chicken Fried Rice">
+        <div class="food-info">
+            <h3>Chicken Fried Rice</h3>
+            <p>Delicious fried rice with chicken.</p>
+            <div class="price">₹150</div>
+            <button class="add-btn" onclick="addCart('Chicken Fried Rice',150)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Chinese">
+        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600" alt="Veg Noodles">
+        <div class="food-info">
+            <h3>Veg Noodles</h3>
+            <p>Hot noodles with fresh vegetables.</p>
+            <div class="price">₹100</div>
+            <button class="add-btn" onclick="addCart('Veg Noodles',100)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Curries">
+        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600" alt="Chicken Curry">
+        <div class="food-info">
+            <h3>Chicken Curry</h3>
+            <p>Traditional spicy chicken curry.</p>
+            <div class="price">₹130</div>
+            <button class="add-btn" onclick="addCart('Chicken Curry',130)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Curries">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600" alt="Paneer Butter Masala">
+        <div class="food-info">
+            <h3>Paneer Butter Masala</h3>
+            <p>Soft paneer in creamy tomato gravy.</p>
+            <div class="price">₹160</div>
+            <button class="add-btn" onclick="addCart('Paneer Butter Masala',160)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Snacks">
+        <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600" alt="French Fries">
+        <div class="food-info">
+            <h3>French Fries</h3>
+            <p>Crispy golden potato fries.</p>
+            <div class="price">₹80</div>
+            <button class="add-btn" onclick="addCart('French Fries',80)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Snacks">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600" alt="Samosa">
+        <div class="food-info">
+            <h3>Samosa</h3>
+            <p>Crispy snack filled with spiced potato.</p>
+            <div class="price">₹30</div>
+            <button class="add-btn" onclick="addCart('Samosa',30)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Desserts">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Chocolate Cake">
+        <div class="food-info">
+            <h3>Chocolate Cake</h3>
+            <p>Rich and delicious chocolate cake.</p>
+            <div class="price">₹100</div>
+            <button class="add-btn" onclick="addCart('Chocolate Cake',100)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Desserts">
+        <img src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?w=600" alt="Ice Cream">
+        <div class="food-info">
+            <h3>Ice Cream</h3>
+            <p>Cool and creamy sweet dessert.</p>
+            <div class="price">₹60</div>
+            <button class="add-btn" onclick="addCart('Ice Cream',60)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Beverages">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=600" alt="Fresh Lime Juice">
+        <div class="food-info">
+            <h3>Fresh Lime Juice</h3>
+            <p>Refreshing fresh lime drink.</p>
+            <div class="price">₹40</div>
+            <button class="add-btn" onclick="addCart('Fresh Lime Juice',40)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="food-card" data-category="Beverages">
+        <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=600" alt="Mango Milkshake">
+        <div class="food-info">
+            <h3>Mango Milkshake</h3>
+            <p>Sweet and creamy mango shake.</p>
+            <div class="price">₹70</div>
+            <button class="add-btn" onclick="addCart('Mango Milkshake',70)">Add to Cart</button>
+        </div>
+    </div>
+
+    <p id="noResults">No food items found.</p>
+
+</section>
+
+<footer>
+    <p>© 2026 MANASA PLUMBITE | Fresh Food, Happy Life ❤️</p>
+</footer>
+
+<script>
+let selectedCategory = "All";
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("manasaCart")) || [];
+}
+
+function addCart(name, price) {
+    let cart = getCart();
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("manasaCart", JSON.stringify(cart));
+    updateCount();
+
+    alert(name + " added to cart!");
+}
+
+function updateCount() {
+    let cart = getCart();
+    let total = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    document.getElementById("cartCount").textContent = total;
+}
+
+function filterFood(category, button) {
+    selectedCategory = category;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    searchFood();
+}
+
+function searchFood() {
+    let searchText = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".food-card");
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        let name = card.querySelector("h3").textContent.toLowerCase();
+        let category = card.dataset.category;
+
+        let matchesSearch = name.includes(searchText);
+        let matchesCategory = selectedCategory === "All" ||
+                              category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+            card.style.display = "block";
+            visibleCount++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("noResults").style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+// Read category from homepage link, if supplied
+const params = new URLSearchParams(window.location.search);
+const requestedCategory = params.get("category");
+
+if (requestedCategory) {
+    const matchingButton = [...document.querySelectorAll(".filters button")]
+        .find(btn => btn.textContent.trim().toLowerCase() === requestedCategory.toLowerCase());
+
+    if (matchingButton) {
+        filterFood(requestedCategory, matchingButton);
+    }
+}
+
+updateCount();
+</script>
+
+</body>
+</html>

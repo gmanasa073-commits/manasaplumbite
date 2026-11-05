@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manasa PlumBite | Home</title>
+
+<style>
+
+/* MAIN DESIGN */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+    --dark: #21152E;
+    --lime: #D6FF72;
+    --cream: #FFF8EC;
+    --purple: #49345D;
+}
+
+body {
+    background: var(--cream);
+    color: var(--dark);
+}
+
+/* HEADER */
+
+header {
+    background: var(--dark);
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: var(--lime);
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--lime);
+}
+
+/* DROPDOWN */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background: white;
+    min-width: 170px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px #0002;
+    z-index: 10;
+}
+
+.dropdown-content a {
+    display: block;
+    color: var(--dark);
+    padding: 12px;
+}
+
+.dropdown-content a:hover {
+    background: var(--cream);
+    color: var(--purple);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* CART BUTTON */
+
+.cart-btn {
+    background: var(--lime);
+    color: var(--dark);
+    padding: 11px 18px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+
+.hero {
+    background: var(--dark);
+    color: white;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--lime);
+}
+
+.hero p {
+    margin: 22px 0;
+    color: #D8CCDF;
+    line-height: 1.8;
+}
+
+.hero img {
+    width: 43%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--dark);
+    padding: 13px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #B9EF4D;
+    transform: translateY(-3px);
+}
+
+/* CATEGORIES */
+
+.section {
+    padding: 55px 7%;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #786D80;
+    margin-bottom: 30px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    padding: 25px 12px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px #21152E10;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+    background: var(--lime);
+}
+
+.category-card h3 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.category-card .emoji {
+    font-size: 40px;
+}
+
+/* FOOD CARDS */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #21152E12;
+    transition: .3s;
+}
+
+.food-card:hover {
+    transform: translateY(-7px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 18px;
+}
+
+.food-info p {
+    color: #786D80;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.food-info button {
+    width: 100%;
+    border-radius: 9px;
+}
+
+/* SEARCH */
+
+.search-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px;
+    border: 1px solid #DDD3E2;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    outline: none;
+}
+
+/* ABOUT */
+
+.about {
+    background: #EDE5F2;
+    text-align: center;
+}
+
+.about p {
+    max-width: 750px;
+    margin: 15px auto;
+    line-height: 1.8;
+    color: #65546F;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer h2 {
+    color: var(--lime);
+    margin-bottom: 12px;
+}
+
+footer p {
+    margin: 8px;
+    color: #D8CCDF;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 700px) {
+
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 13px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero img {
+        width: 100%;
+        height: 230px;
+    }
+
+    .section h2 {
+        font-size: 26px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">MANASA PLUMBITE.</div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="menu.html">Menu</a>
+
+        <div class="dropdown">
+            <a href="#categories">Categories ▾</a>
+
+            <div class="dropdown-content">
+                <a href="menu.html?category=Biryani">Biryani</a>
+                <a href="menu.html?category=Chinese">Chinese</a>
+                <a href="menu.html?category=Curries">Curries</a>
+                <a href="menu.html?category=Snacks">Snacks</a>
+                <a href="menu.html?category=Dessert">Desserts</a>
+                <a href="menu.html?category=Beverages">Beverages</a>
+            </div>
+        </div>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+        <a href="login.html">Login</a>
+
+        <button class="cart-btn" onclick="showCart()">
+            🛒 Cart (<span id="cartCount">0</span>)
+        </button>
+
+    </nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Good Food.<br>
+            <span>Great Mood.</span>
+        </h1>
+
+        <p>
+            Welcome to Manasa PlumBite!
+            Discover delicious food, amazing flavours
+            and your favourite meals at affordable prices.
+        </p>
+
+        <a href="menu.html" class="btn">
+            Explore Our Menu →
+        </a>
+
+    </div>
+
+    <img
+    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900"
+    alt="Delicious food">
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+    <h2>Explore Categories</h2>
+
+    <p class="subtitle">
+        Choose your favourite food category.
+    </p>
+
+    <div class="category-grid">
+
+        <div class="category-card" onclick="openCategory('Biryani')">
+            <div class="emoji">🍛</div>
+            <h3>Biryani</h3>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Chinese')">
+            <div class="emoji">🍜</div>
+            <h3>Chinese</h3>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Curries')">
+            <div class="emoji">🍲</div>
+            <h3>Curries</h3>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Snacks')">
+            <div class="emoji">🍟</div>
+            <h3>Snacks</h3>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Dessert')">
+            <div class="emoji">🍰</div>
+            <h3>Desserts</h3>
+        </div>
+
+        <div class="category-card" onclick="openCategory('Beverages')">
+            <div class="emoji">🥤</div>
+            <h3>Beverages</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURED FOOD -->
+
+<section class="section">
+
+    <h2>Our Popular Food ❤️</h2>
+
+    <p class="subtitle">
+        Taste the most loved dishes at Manasa PlumBite.
+    </p>
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search your favourite food..."
+        oninput="searchFood()">
+
+    <div class="food-grid" id="foodGrid">
+
+        <div class="food-card">
+
+            <img src="https://images.unsplash.com/photo-1563379091339-03246963d51a?w=600">
+
+            <div class="food-info">
+                <h3>Chicken Biryani</h3>
+                <p>Spicy chicken with flavourful rice.</p>
+                <div class="price">₹180</div>
+
+                <button class="btn" onclick="addCart('Chicken Biryani',180)">
+                    Add to Cart +
+                </button>
+            </div>
+
+        </div>
+
+        <div class="food-card">
+
+            <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600">
+
+            <div class="food-info">
+                <h3>Veg Biryani</h3>
+                <p>Delicious rice with fresh vegetables.</p>
+                <div class="price">₹130</div>
+
+                <button class="btn" onclick="addCart('Veg Biryani',130)">
+                    Add to Cart +
+                </button>
+            </div>
+
+        </div>
+
+        <div class="food-card">
+
+            <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600">
+
+            <div class="food-info">
+                <h3>Chicken Curry</h3>
+                <p>Spicy chicken in traditional gravy.</p>
+                <div class="price">₹130</div>
+
+                <button class="btn" onclick="addCart('Chicken Curry',130)">
+                    Add to Cart +
+                </button>
+            </div>
+
+        </div>
+
+        <div class="food-card">
+
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600">
+
+            <div class="food-info">
+                <h3>French Fries</h3>
+                <p>Crispy golden potato fries.</p>
+                <div class="price">₹80</div>
+
+                <button class="btn" onclick="addCart('French Fries',80)">
+                    Add to Cart +
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section class="section about">
+
+    <h2>Why Choose Manasa PlumBite?</h2>
+
+    <p>
+        We believe that great food brings happiness.
+        Our platform makes it easy to explore food,
+        select your favourite dishes and enjoy a
+        simple online ordering experience.
+    </p>
+
+    <a href="about.html" class="btn">
+        Know More About Us
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>MANASA PLUMBITE.</h2>
+
+    <p>Good Food. Great Mood.</p>
+
+    <p>Fresh Food | Delicious Taste | Happy Customers</p>
+
+    <p>© 2026 Manasa PlumBite. All Rights Reserved.</p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+// CART DATA
+
+let cart = JSON.parse(
+    localStorage.getItem("manasaCart") || "[]"
+);
+
+// ADD TO CART
+
+function addCart(name, price) {
+
+    let item = cart.find(food => food.name === name);
+
+    if(item) {
+        item.quantity++;
+    }
+    else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem(
+        "manasaCart",
+        JSON.stringify(cart)
+    );
+
+    updateCount();
+
+    alert(name + " added to your cart!");
+}
+
+// UPDATE CART COUNT
+
+function updateCount() {
+
+    let count = cart.reduce(
+        (sum, item) => sum + item.quantity, 0
+    );
+
+    document.getElementById("cartCount").innerText = count;
+}
+
+// OPEN CART
+
+function showCart() {
+
+    window.location.href = "cart.html";
+
+}
+
+// OPEN CATEGORY
+
+function openCategory(category) {
+
+    window.location.href =
+        "menu.html?category=" + encodeURIComponent(category);
+
+}
+
+// SEARCH FOOD
+
+function searchFood() {
+
+    let input = document.getElementById("search")
+        .value.toLowerCase();
+
+    let cards = document.querySelectorAll(".food-card");
+
+    cards.forEach(card => {
+
+        let name = card.querySelector("h3")
+            .innerText.toLowerCase();
+
+        card.style.display =
+            name.includes(input) ? "block" : "none";
+
+    });
+
+}
+
+// INITIALIZE
+
+updateCount();
+
+</script>
+
+</body>
+</html>
